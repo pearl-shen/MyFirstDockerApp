@@ -1,17 +1,10 @@
-   using MyFirstApp.MesModel;
-   public interface IMesService
-    {
-        bool MoveIn(Lot lot, Equipment equipment);
-    }
+// 1. 位置: MyFirstApp/Services/IMesService.cs
+using MyFirstApp.MesModel;
 
-    public class MesService : IMesService
-    {
-        public bool MoveIn(Lot lot, Equipment equipment)
-        {
-            if (equipment.Status != EquipmentStatus.Idle) return false;
-            lot.Status = LotStatus.Running;
-            lot.CurrentEquipmentId = equipment.Id;
-            equipment.Status = EquipmentStatus.Busy;
-            return true;
-        }
-    }
+namespace MyFirstApp.Services;
+
+// 定義必須有MoveIn功能
+public interface IMesService
+{
+    bool MoveIn(Lot lot, Equipment eq);
+}
